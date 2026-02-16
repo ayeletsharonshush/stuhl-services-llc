@@ -141,7 +141,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                     "Hands-on owner working on all projects for maximum accountability",
                     "Specialized in Kitchen, Bathroom, & Basement finish",
                     "Transparent project timelines & cost estimates",
-                    "Detailed cleaning at every job's end"
+                    "Detailed proffesional cleaning at every job's end"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center">
                       <div className="bg-brand-red p-1.5 rounded-full mr-4 shadow-lg shadow-brand-red/30">
