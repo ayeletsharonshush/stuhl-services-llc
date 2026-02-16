@@ -73,7 +73,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
               <div className="absolute -inset-4 border-2 border-brand-gold/20 rounded-3xl -z-10 translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-brand-navy/20 transform group-hover:-translate-y-2 transition-transform duration-500">
                 <img 
-                  src="https://images.unsplash.com/photo-1556911223-e2f0228ffaa0?q=80&w=1000&auto=format&fit=crop" 
+                  src="/images/hero.jpg" 
                   alt="Modern Home Renovation" 
                   className="w-full h-auto object-cover"
                 />
