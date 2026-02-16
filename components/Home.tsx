@@ -55,7 +55,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
               
               <div className="mt-16 flex items-center gap-10 border-t border-slate-100 pt-10">
                 <div>
-                  <div className="text-3xl font-black text-brand-navy">12+</div>
+                  <div className="text-3xl font-black text-brand-navy">6+</div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Local Years</div>
                 </div>
                 <div>
