@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 Crafting Spaces You <span className="text-brand-gold">Love.</span>
               </h1>
               <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed font-medium">
-                Specializing in premium bathrooms, kitchens, and basements. <span className="text-brand-navy font-bold">Stuhl Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
+                Specializing in premium bathrooms, basements and kitchens and custom work. <span className="text-brand-navy font-bold">Stuhl Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
               </p>
               <div className="flex flex-col sm:flex-row gap-5">
                 <button 
