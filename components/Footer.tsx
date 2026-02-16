@@ -17,12 +17,12 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
             <div className="flex items-center gap-4 mb-10 leading-none">
               <Logo size={48} />
               <div className="flex flex-col">
-                <span className="text-3xl font-black tracking-tighter text-brand-navy">STUHL</span>
+                <span className="text-3xl font-black tracking-tighter text-brand-navy">RONEN</span>
                 <span className="text-xs font-bold tracking-[0.4em] text-brand-gold uppercase mt-0.5">SERVICES LLC</span>
               </div>
             </div>
             <p className="text-slate-500 max-w-sm mb-10 leading-relaxed font-medium">
-              Stuhl Services LLC is a local, owner-operated remodeling company specializing in kitchens, bathrooms, and basements. Built on trust and quality.
+              Ronen Services LLC is a local, owner-operated remodeling company specializing in kitchens, bathrooms, and basements. Built on trust and quality.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-12 h-12 flex items-center justify-center border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all">
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center text-slate-400 text-[10px] font-black uppercase tracking-widest pt-12 border-t border-slate-50">
-          <p>© 2024 Stuhl Services LLC. All rights reserved.</p>
+          <p>© 2024 Ronen Services LLC. All rights reserved.</p>
           <div className="flex gap-10 mt-6 md:mt-0">
             <a href="#" className="hover:text-brand-navy transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-brand-navy transition-colors">Terms of Service</a>

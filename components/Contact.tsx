@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Inquiry Received. A project manager from Stuhl Services will contact you within 24 hours.");
+    alert("Inquiry Received. A project manager from Ronen Services will contact you within 24 hours.");
     setFormState({
       name: '',
       email: '',
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-black text-brand-navy uppercase tracking-widest text-sm mb-1">Email Inquiry</h4>
-                  <p className="text-slate-600 font-bold">estimate@stuhlservices.com</p>
+                  <p className="text-slate-600 font-bold">estimate@ronenservices.com</p>
                 </div>
               </div>
 
@@ -78,7 +78,7 @@ const Contact: React.FC = () => {
                     required
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
-                    placeholder="John Stuhl"
+                    placeholder="John Ronen"
                     className="w-full px-6 py-4 rounded-xl border border-slate-100 bg-slate-50 focus:bg-white focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 outline-none transition-all font-bold text-brand-navy"
                   />
                 </div>

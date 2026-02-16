@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
       'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=800&auto=format&fit=crop'
     ],
     testimonial: {
-      text: "The Stuhl team helped us maximize every square inch. We now have a dedicated space for work and a beautiful area to host friends.",
+      text: "The Ronen team helped us maximize every square inch. We now have a dedicated space for work and a beautiful area to host friends.",
       author: "James & Kara",
       location: "Morristown, NJ"
     }
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop'
     ],
     testimonial: {
-      text: "Stuhl Services turned our dated 90s kitchen into the heart of our home. Their attention to detail on the custom cabinetry was beyond what we expected.",
+      text: "Ronen Services turned our dated 90s kitchen into the heart of our home. Their attention to detail on the custom cabinetry was beyond what we expected.",
       author: "David L.",
       location: "Madison, NJ"
     }
