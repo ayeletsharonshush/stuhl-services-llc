@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
               </div>
             </div>
             <p className="text-slate-500 max-w-sm mb-10 leading-relaxed font-medium">
-              Stuhl Services LLC is a local, owner-operated remodeling company specializing in kitchens, bathrooms, and basements. Built on trust and quality.
+              Stuhl Services LLC is a local, owner-operated remodeling company specializing in bathrooms, basements and kitchens. Built on trust and quality.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-12 h-12 flex items-center justify-center border-2 border-slate-100 rounded-2xl text-slate-400 hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all">
