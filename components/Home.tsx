@@ -139,7 +139,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                   {[
                     "Over 100+ local references available upon request",
                     "Hands-on owner working on all projects for maximum accountability",
-                    "Specialized in Kitchen, Bathroom, & Basement finish",
+                    "Specialized in Bathroom, Basement and Kitchen transformations",
                     "Transparent project timelines & cost estimates",
                     "Detailed proffesional cleaning at every job's end"
                   ].map((item, i) => (
