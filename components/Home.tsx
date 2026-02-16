@@ -35,7 +35,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 Crafting Spaces You <span className="text-brand-gold">Love.</span>
               </h1>
               <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed font-medium">
-                Specializing in premium bathrooms, kitchens, and basements. <span className="text-brand-navy font-bold">Ronen Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
+                Specializing in premium bathrooms, kitchens, and basements. <span className="text-brand-navy font-bold">Stuhl Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
               </p>
               <div className="flex flex-col sm:flex-row gap-5">
                 <button 
@@ -133,7 +133,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
             <div className="relative z-10 lg:grid lg:grid-cols-2 gap-20 items-center">
               <div>
                 <h2 className="text-4xl lg:text-5xl font-black mb-8 leading-tight">Expert Service. <span className="text-brand-gold underline decoration-brand-red underline-offset-8">Local Trust.</span></h2>
-                <p className="text-slate-300 mb-12 text-lg font-medium leading-relaxed">At Ronen Services, we treat your home like our own. Our business is built on word-of-mouth and a long list of successful local references.</p>
+                <p className="text-slate-300 mb-12 text-lg font-medium leading-relaxed">At Stuhl Services, we treat your home like our own. Our business is built on word-of-mouth and a long list of successful local references.</p>
                 
                 <ul className="space-y-6">
                   {[

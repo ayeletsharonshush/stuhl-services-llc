@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setSection }) => {
             <Logo size={32} className="group-hover:scale-110 transition-transform duration-300" />
             <div className="flex flex-col leading-none">
               <span className="text-2xl font-black tracking-tighter text-brand-navy uppercase">
-                RONEN
+                STUHL
               </span>
               <span className="text-[10px] font-bold tracking-[0.35em] text-brand-gold uppercase -mt-0.5">
                 SERVICES LLC
