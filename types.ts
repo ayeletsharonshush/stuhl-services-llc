@@ -1,0 +1,22 @@
+
+export interface Testimonial {
+  text: string;
+  author: string;
+  location: string;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  category: 'Bathroom' | 'Basement' | 'Kitchen' | 'Custom' | 'Storage';
+  description: string;
+  beforeImage: string;
+  afterImages: string[];
+  testimonial: Testimonial;
+}
+
+export enum Section {
+  HOME = 'home',
+  PORTFOLIO = 'portfolio',
+  CONTACT = 'contact'
+}
