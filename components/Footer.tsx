@@ -82,10 +82,10 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
             alt="Owner of Stuhl Services" 
             className="w-full h-auto object-cover"
           />
-          <div className="absolute top-6 left-6 sm:top-8 sm:left-8">
-            <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 max-w-[200px]">
-              <p className="text-brand-navy font-bold text-sm sm:text-base">My latest remodel!</p>
-              <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white/95 rotate-45"></div>
+          <div className="absolute top-3 left-3 sm:top-6 sm:left-6">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-2xl shadow-xl px-2 py-1.5 sm:px-4 sm:py-3">
+              <p className="text-brand-navy font-bold text-[10px] sm:text-sm leading-tight">My<br />Latest<br />Remodel!</p>
+              <div className="absolute top-1/2 -right-1.5 sm:-right-2 w-3 h-3 sm:w-4 sm:h-4 bg-white/95 rotate-45 -translate-y-1/2"></div>
             </div>
           </div>
         </div>
