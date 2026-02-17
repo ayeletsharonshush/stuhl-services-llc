@@ -223,7 +223,8 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                       "Hands-on owner working on all projects for maximum accountability",
                       "Specialized in Bathroom, Basement and Kitchen transformations",
                       "Transparent project timelines & cost estimates",
-                      "Detailed professional cleaning at every job's end"
+                      "\"We Deliver What We Promised\" — our motto",
+                      "Licensed: 13VH11735700"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="bg-brand-gold/20 p-1 rounded-full mt-0.5 shrink-0">

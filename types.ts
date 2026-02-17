@@ -9,6 +9,7 @@ export interface Project {
   id: string;
   title: string;
   category: 'Bathroom' | 'Basement' | 'Kitchen' | 'Custom' | 'Storage';
+  location: string;
   description: string;
   beforeImage: string;
   afterImages: string[];
