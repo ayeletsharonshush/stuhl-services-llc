@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bathroom Remodel Proposal - Stuhl Services LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAF8F5;
+    color: #1a1a1a;
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .header {
+    background: #0F2557;
+    color: white;
+    padding: 40px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(184, 134, 11, 0.08);
+  }
+  .header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .logo-svg { flex-shrink: 0; }
+  .logo-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: white;
+  }
+  .logo-text p {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #B8860B;
+    font-weight: 600;
+  }
+  .header-divider {
+    width: 60px;
+    height: 3px;
+    background: #B8860B;
+    margin: 20px auto;
+  }
+  .proposal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: #B8860B;
+    margin-bottom: 4px;
+  }
+  .proposal-address {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+  }
+  .proposal-date {
+    margin-top: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  .contact-bar {
+    background: #0a1c42;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .contact-bar span { display: flex; align-items: center; gap: 6px; }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section {
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 0 24px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #0F2557;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #B8860B;
+    display: inline-block;
+  }
+
+  .overview-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #B8860B;
+  }
+  .overview-card p {
+    color: #444;
+    font-size: 15px;
+  }
+  .overview-card .highlight {
+    font-weight: 600;
+    color: #0F2557;
+  }
+  .floor-area {
+    margin-top: 16px;
+    background: #f0f4fa;
+    border-radius: 8px;
+    padding: 12px 20px;
+    display: inline-block;
+    font-weight: 600;
+    color: #0F2557;
+    font-size: 14px;
+  }
+
+  .task-list { list-style: none; }
+  .task-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.2s;
+  }
+  .task-item:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .task-number {
+    width: 36px;
+    height: 36px;
+    background: #0F2557;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .task-content h4 {
+    color: #0F2557;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .task-content p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .total-box {
+    background: #0F2557;
+    color: white;
+    border-radius: 12px;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+  }
+  .total-box .label {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .total-box .amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: #B8860B;
+  }
+
+  .options-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .options-table thead th {
+    background: #0F2557;
+    color: white;
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .options-table thead th:last-child { text-align: right; }
+  .options-table tbody td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #444;
+    vertical-align: top;
+  }
+  .options-table tbody td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: #0F2557;
+    white-space: nowrap;
+  }
+  .options-table tbody tr:last-child td { border-bottom: none; }
+  .options-table tbody tr:hover { background: #fafafa; }
+  .option-name {
+    font-weight: 600;
+    color: #0F2557;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .project-options-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #B8860B;
+  }
+  .project-options-card h4 {
+    color: #0F2557;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  .project-options-card p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .project-options-card .price {
+    display: inline-block;
+    margin-top: 10px;
+    background: #f0f4fa;
+    color: #0F2557;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  .notes-section {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .notes-section h3 {
+    font-family: 'DM Serif Display', serif;
+    color: #0F2557;
+    font-size: 18px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  .notes-section h3:first-child { margin-top: 0; }
+  .notes-section p, .notes-section li {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .notes-section ul {
+    margin: 8px 0 8px 20px;
+  }
+  .notes-section li { margin-bottom: 4px; }
+
+  .payment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .payment-step {
+    background: #f0f4fa;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .payment-step .pct {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #0F2557;
+  }
+  .payment-step .when {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .material-costs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .material-item {
+    background: #f9f7f4;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  .material-item .name { color: #555; }
+  .material-item .cost { font-weight: 600; color: #0F2557; }
+
+  .references-section {
+    background: #0F2557;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .references-section h3 {
+    font-family: 'DM Serif Display', serif;
+    color: #B8860B;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .references-section p {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .ref-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .ref-link {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  .ref-link:hover { background: rgba(184, 134, 11, 0.3); }
+
+  .signature-section {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 32px;
+    text-align: center;
+  }
+  .signature-section h3 {
+    font-family: 'DM Serif Display', serif;
+    color: #0F2557;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .signature-section p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .sig-line {
+    border-bottom: 2px solid #ccc;
+    width: 300px;
+    max-width: 100%;
+    margin: 40px auto 8px;
+  }
+  .sig-label {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .sig-contact {
+    margin-top: 24px;
+    background: #f0f4fa;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #0F2557;
+    font-weight: 600;
+  }
+
+  .footer {
+    background: #0F2557;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+  .footer .copyright { margin-bottom: 4px; }
+  .footer .confidential {
+    font-style: italic;
+    font-size: 11px;
+  }
+
+  .hourly-note {
+    margin-top: 16px;
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 13px;
+    color: #7a6200;
+    border-left: 3px solid #B8860B;
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 16px; }
+    .logo-text h1 { font-size: 22px; }
+    .proposal-title { font-size: 20px; }
+    .contact-bar { gap: 16px; font-size: 11px; }
+    .section { padding: 0 16px; margin: 28px auto; }
+    .task-item { padding: 16px; }
+    .total-box { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+    .total-box .amount { font-size: 28px; }
+    .payment-grid { grid-template-columns: repeat(2, 1fr); }
+    .material-costs { grid-template-columns: 1fr; }
+    .options-table { font-size: 13px; }
+    .options-table thead th, .options-table tbody td { padding: 10px 12px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .header { padding: 24px; }
+    .section { margin: 20px auto; }
+    .task-item:hover { transform: none; }
+    .references-section, .signature-section { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <svg class="logo-svg" width="36" height="58" viewBox="0 0 250 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M110 32C50.3532 32 2 80.3532 2 140C2 199.647 50.3532 248 110 248V32Z" fill="#EF4444"/>
+        <path d="M125 32H240C240 63.7584 214.242 89.5168 182.5 89.5168C150.758 89.5168 125 63.7584 125 32Z" fill="#D97706"/>
+        <path d="M135 110V360C190.228 360 235 315.228 235 260C235 204.772 190.228 160 135 160V110Z" fill="#1E3A8A"/>
+        <path d="M2 360H110C110 329.624 85.3757 305 55 305C24.6243 305 0 329.624 0 360H2Z" fill="#06B6D4"/>
+      </svg>
+      <div class="logo-text">
+        <h1>STUHL SERVICES LLC</h1>
+        <p>WE DELIVER WHAT WE PROMISED</p>
+      </div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="proposal-title">Bathroom Remodel Proposal</div>
+    <div class="proposal-address">404 Central Avenue, New Providence, NJ (V1)</div>
+    <div class="proposal-date">February 15, 2026</div>
+  </div>
+</div>
+
+<div class="contact-bar">
+  <span>59 Sunrise Drive, Gillette NJ 07933</span>
+  <span>Fully Insured for Your Protection</span>
+  <span>License: 13VH11735700</span>
+</div>
+
+<div class="section">
+  <h2 class="section-title">Project Overview</h2>
+  <div class="overview-card">
+    <p><span class="highlight">Client Request:</span> The homeowners would like to have a complete remodel at their second floor bathroom. Major upgrades include increased shower area, additional storage cabinet, enlarging the overall floor space and a larger vanity.</p>
+    <div class="floor-area">Ensuite Bathroom Floor: approx. 13.3' x 7.7'</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">Main Project Tasks</h2>
+  <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Breakdown for main project items (labor-only component):</p>
+  <ul class="task-list">
+    <li class="task-item">
+      <div class="task-number">1</div>
+      <div class="task-content">
+        <h4>Material Procurement & Delivery</h4>
+        <p>We will recommend and help with transportation of all selected materials, ensuring quality and timely arrival to stay on schedule.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">2</div>
+      <div class="task-content">
+        <h4>Site Preparation & Protection</h4>
+        <p>The work area and pathway will be covered with protective materials to safeguard surfaces and contain debris.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">3</div>
+      <div class="task-content">
+        <h4>Shower, Drain, Vanity and Toilet Removal</h4>
+        <p>The existing shower will be detached, with careful disconnection of the drain to protect the plumbing.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">4</div>
+      <div class="task-content">
+        <h4>Tile, Wall and Floor Removal</h4>
+        <p>Existing tiles, grout, and waterproofing will be removed carefully to reveal bare studs and subfloor while minimizing impact on surrounding areas.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">5</div>
+      <div class="task-content">
+        <h4>Debris Removal & Cleanup</h4>
+        <p>All removed materials are properly disposed of to the disposal container outside and the work site is cleaned to prepare for the next phase.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">6</div>
+      <div class="task-content">
+        <h4>Framing & Subfloor Inspection</h4>
+        <p>After removal, we will inspect the studs and subfloor for potential issues like mold or structural concerns. Additional blocking will be added.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">7</div>
+      <div class="task-content">
+        <h4>Drywall Installation</h4>
+        <p>Shower walls will be leveled and plumbed for stability. Moisture-resistant drywall will be installed throughout the bathroom.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">8</div>
+      <div class="task-content">
+        <h4>Custom Shower Pan and Drain Installation</h4>
+        <p>The prefabricated under-tiles shower pan will be installed to allow for optimal drainage.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">9</div>
+      <div class="task-content">
+        <h4>Waterproofing</h4>
+        <p>A high-quality waterproof membrane (Schluter) will be applied to all necessary surfaces, including corners, edges, floor and wall-to-floor transition to ensure no leaks followed by a 24hrs water test.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">10</div>
+      <div class="task-content">
+        <h4>Tile Layout, Cutting, and Installation</h4>
+        <p>Tiles will be measured and cut precisely, with thin-set mortar used for secure application. Shower walls and floor tiles will be installed.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">11</div>
+      <div class="task-content">
+        <h4>Grouting and Sealing</h4>
+        <p>Grout will fill the gaps between tiles, creating a watertight seal. Matching color silicone is applied at all plane-changing edges for added seal and protection.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">12</div>
+      <div class="task-content">
+        <h4>Shower Glass Panel and Trim Installation</h4>
+        <p>New glass panels will be installed with precise alignment and secure mounting, complemented by thoughtfully fitted shower trim and additional hardware.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">13</div>
+      <div class="task-content">
+        <h4>Finishing Touches</h4>
+        <p>Joint sealing, sanding, and preparation for painting as required on both walls and ceiling.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">14</div>
+      <div class="task-content">
+        <h4>Walls, Ceiling and Trim Painting</h4>
+        <p>Applying primer to ensure optimal paint adhesion. Applying 2 coats of high-quality paint to achieve even coverage and a flawless finish. Cutting in along edges, corners, and trim to ensure sharp, professional lines.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">15</div>
+      <div class="task-content">
+        <h4>Toilet and Vanity Installation</h4>
+        <p>Carefully install the toilet and vanity and connect required plumbing. Seal with waterproof silicon where required.</p>
+      </div>
+    </li>
+    <li class="task-item">
+      <div class="task-number">16</div>
+      <div class="task-content">
+        <h4>Final Cleanup & Inspection</h4>
+        <p>The workspace will be professionally cleaned, and a final quality check will ensure customer satisfaction.</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="total-box">
+    <div class="label">Total Labor Cost</div>
+    <div class="amount">$8,900</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">Project-Specific Options</h2>
+  <p style="color: #666; font-size: 14px; margin-bottom: 20px;">These options are specific to this project:</p>
+
+  <div class="project-options-card">
+    <h4>Wall Demolition & Reconfiguration</h4>
+    <p>The angled wall will be demolished and re-framed to allow for: 1) A new floor-to-ceiling in-built storage cabinet. 2) Adding floor space allowing for a bigger vanity to be installed. This requires the storage cabinet in the adjacent bedroom to be squared, spackled, painted and finished as well.</p>
+    <div class="price">$1,250</div>
+  </div>
+
+  <div class="project-options-card">
+    <h4>Powered Medicine Cabinet</h4>
+    <p>Frame and install a new LED-light powered recessed medicine cabinet. Add an electrical power location inside the wall to power the lights.</p>
+    <div class="price">$375</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">General Options</h2>
+  <p style="color: #666; font-size: 14px; margin-bottom: 20px;">These options may be requested by the customer or required once the project starts. Costs cover the labor-only component:</p>
+
+  <table class="options-table">
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="option-name">Ceiling Lighting Installation</span></td>
+        <td>Low-profile LED spotlights (cost per light)</td>
+        <td>$95</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Ceiling Fan Installation</span></td>
+        <td>High efficiency fan to replace existing fan</td>
+        <td>$295</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Power Outlet Installation</span></td>
+        <td>New power outlet installation (cost per outlet)</td>
+        <td>$95</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Light Switch Installation</span></td>
+        <td>New light switch installation (cost per switch)</td>
+        <td>$125</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Water Valve Replacement</span></td>
+        <td>Upgrade 1/2" valves to 1/4-turn valves (per valve)</td>
+        <td>$85</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Grout Sealing</span></td>
+        <td>Application of grout sealer to prevent discoloration</td>
+        <td>$275</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Shower Wall Niche</span></td>
+        <td>Standard 12"x28" recessed shower niche installation</td>
+        <td>$775</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Tiled Shower Seat/Bench</span></td>
+        <td>Internal tiled bench installation</td>
+        <td>$575</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Shower Shelves</span></td>
+        <td>Per shelf installation cost</td>
+        <td>$95</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Safety Grab-Bar Installation</span></td>
+        <td>Per grab-bar installation cost</td>
+        <td>$325</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Rain Shower Head Installation</span></td>
+        <td>Ceiling-mounted rain shower head plumbing and install</td>
+        <td>$295</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Hand-held Shower Head Installation</span></td>
+        <td>Wall-mount hand-held shower head plumbing and install</td>
+        <td>$295</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Bathroom Fixture Installation</span></td>
+        <td>Includes toilet paper holder, towel rack, hand towel holder, window blinds</td>
+        <td>$215</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Specialty Tiles/Patterns</span></td>
+        <td>Surcharge for natural stone, large format tiles (bigger than 24"x36"), or complex patterns. Per sf of installed tile.</td>
+        <td>$2.75/sf</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Subfloor Repair or Leveling</span></td>
+        <td>Replacement or leveling of damaged subfloor sections</td>
+        <td>$515</td>
+      </tr>
+      <tr>
+        <td><span class="option-name">Cast Iron Bathtub Demolition</span></td>
+        <td>Extra cost for cast iron tub demolition</td>
+        <td>$225</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="hourly-note">
+    Additional work requested by the customer and not listed above will be discussed, agreed and charged at a flat hourly rate of <strong>$95 per hour</strong>.
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">General Notes</h2>
+  <div class="notes-section">
+    <h3>Materials</h3>
+    <p>The customer is responsible for all material costs associated with the project, including but not limited to drywall, tiles, waterproofing materials, mortar, grout, hardware, prefabricated items, and any other required supplies. Materials purchased by Stuhl Services on behalf of the project will be reimbursed by the customer upon presentation of receipts.</p>
+
+    <h3>Estimated Material Costs</h3>
+    <div class="material-costs">
+      <div class="material-item">
+        <span class="name">Waterproofing & Hardware</span>
+        <span class="cost">$550 – $850</span>
+      </div>
+      <div class="material-item">
+        <span class="name">Tiles & Related</span>
+        <span class="cost">$750 – $1,250</span>
+      </div>
+      <div class="material-item">
+        <span class="name">Drywall & Paint</span>
+        <span class="cost">$250 – $350</span>
+      </div>
+      <div class="material-item">
+        <span class="name">Glass Door</span>
+        <span class="cost">$450 – $850</span>
+      </div>
+      <div class="material-item">
+        <span class="name">Vanity, Toilet & Cabinet</span>
+        <span class="cost">$900 – $1,250</span>
+      </div>
+      <div class="material-item">
+        <span class="name">Disposal Removal</span>
+        <span class="cost">$350 – $450</span>
+      </div>
+    </div>
+
+    <h3>Payment Schedule</h3>
+    <div class="payment-grid">
+      <div class="payment-step">
+        <div class="pct">15%</div>
+        <div class="when">Deposit upon acceptance</div>
+      </div>
+      <div class="payment-step">
+        <div class="pct">35%</div>
+        <div class="when">Project start date</div>
+      </div>
+      <div class="payment-step">
+        <div class="pct">35%</div>
+        <div class="when">Tile installation complete</div>
+      </div>
+      <div class="payment-step">
+        <div class="pct">15%</div>
+        <div class="when">Project completion</div>
+      </div>
+    </div>
+
+    <h3>Permits and Regulatory Approvals</h3>
+    <p>The customer is responsible for obtaining all required permits and regulatory approvals for this project. Stuhl Services will assist in coordinating this process as needed.</p>
+
+    <h3>Equipment Rental</h3>
+    <p>Any required specialized equipment (including, but not limited to, large-format tile cutters, disposal bins, or power washers) will be discussed separately and may result in additional charges.</p>
+
+    <h3>Waste Disposal</h3>
+    <p>Discarded construction materials will be placed in a dumpster bag (typically located in the driveway) and collected upon completion of the work at an additional cost. Disposal at a public dump is not included in this quotation.</p>
+
+    <h3>Quotation Validity</h3>
+    <p>The quoted prices are valid for <strong>30 days</strong> from the date of issuance. If confirmation is received after this period, a revised quotation may be required.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="references-section">
+    <h3>Selected Projects & References</h3>
+    <p>For the latest references, projects and to get some ideas, please visit:</p>
+    <div class="ref-links">
+      <a href="https://stuhl-services-llc.netlify.app" class="ref-link" target="_blank">Our Website</a>
+      <a href="https://www.facebook.com/stuhlservices" class="ref-link" target="_blank">Facebook Page</a>
+      <a href="#" class="ref-link">Google Reviews</a>
+    </div>
+  </div>
+
+  <div class="signature-section">
+    <h3>Customer Confirmation & Deposit</h3>
+    <p>Please confirm this quotation by signing below and send a photo of this page (using SMS or WhatsApp) to:</p>
+    <div class="sig-contact">908-723-5922</div>
+    <div class="sig-line"></div>
+    <div class="sig-label">Customer Signature & Date</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="copyright">Copyright &copy; 2026 Stuhl Services LLC. All Rights Reserved.</div>
+  <div class="confidential">Commercial In Confidence</div>
+</div>
+
+</body>
+</html>
