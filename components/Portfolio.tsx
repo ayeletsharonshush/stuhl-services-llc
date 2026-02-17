@@ -1,152 +1,175 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
-import { Quote, MoveRight, ChevronRight, Eye, Layers } from 'lucide-react';
+import { Quote, MoveRight, ChevronRight, Eye, Layers, X } from 'lucide-react';
+
+const FadeInSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = '', delay = 0 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Portfolio: React.FC = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  return (
-    <div className="py-24 bg-white animate-in slide-in-from-bottom-8 duration-1000">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <span className="text-brand-red font-black uppercase tracking-[0.4em] text-xs mb-4 block">Proven Excellence</span>
-          <h2 className="text-5xl font-black text-brand-navy mb-6">Our Transformations</h2>
-          <div className="w-24 h-1.5 bg-brand-gold mx-auto rounded-full mb-8"></div>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg font-medium">Seeing is believing. Explore our latest work across the metropolitan area.</p>
-        </div>
+  useEffect(() => {
+    if (activeProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [activeProject]);
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {PROJECTS.map((project) => (
-            <div 
-              key={project.id} 
-              className="bg-white rounded-[2rem] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-50 flex flex-col group cursor-pointer transition-all hover:-translate-y-2"
-              onClick={() => setActiveProject(project)}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img 
-                  src={project.afterImages[0]} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute top-6 left-6">
-                  <span className="bg-brand-navy/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-brand-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="bg-brand-gold text-white p-4 rounded-full shadow-2xl transform scale-75 group-hover:scale-100 transition-transform">
-                    <Eye size={32} />
+  return (
+    <div className="py-28 bg-brand-cream">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <FadeInSection>
+          <div className="text-center mb-20">
+            <span className="inline-block text-brand-red font-bold uppercase tracking-[0.3em] text-xs mb-4 px-4 py-1.5 bg-brand-red/5 rounded-full">Proven Excellence</span>
+            <h2 className="text-5xl text-brand-navy mb-6">Our Transformations</h2>
+            <p className="text-brand-charcoal/50 max-w-2xl mx-auto text-lg">Seeing is believing. Explore our latest work across the metropolitan area.</p>
+          </div>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PROJECTS.map((project, idx) => (
+            <FadeInSection key={project.id} delay={idx * 150}>
+              <div 
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-brand-navy/5 flex flex-col group cursor-pointer hover:-translate-y-2"
+                onClick={() => setActiveProject(project)}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img 
+                    src={project.afterImages[0]} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute top-5 left-5">
+                    <span className="bg-white/90 backdrop-blur-md text-brand-navy text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-sm">
+                      {project.category}
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 bg-brand-navy/50 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                    <div className="bg-white text-brand-navy p-4 rounded-full shadow-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <Eye size={28} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="p-10 flex-1 flex flex-col">
-                <h3 className="text-2xl font-black mb-3 text-brand-navy group-hover:text-brand-gold transition-colors">{project.title}</h3>
-                <p className="text-slate-500 text-sm mb-8 font-medium leading-relaxed line-clamp-2">{project.description}</p>
                 
-                <div className="mt-auto pt-8 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-brand-red flex items-center justify-center text-[10px] font-black text-white shadow-md shadow-brand-red/20">
-                      B
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="text-xl font-extrabold mb-2 text-brand-navy group-hover:text-brand-gold transition-colors duration-300">{project.title}</h3>
+                  <p className="text-brand-charcoal/50 text-sm mb-6 leading-relaxed line-clamp-2">{project.description}</p>
+                  
+                  <div className="mt-auto pt-6 border-t border-brand-navy/5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-full bg-brand-red/10 flex items-center justify-center text-[9px] font-bold text-brand-red">B</div>
+                      <div className="w-7 h-7 rounded-full bg-brand-cyan/10 flex items-center justify-center text-[9px] font-bold text-brand-cyan">A</div>
+                      <span className="text-[10px] font-bold text-brand-charcoal/30 uppercase tracking-wider ml-1">Before / After</span>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-brand-cyan flex items-center justify-center text-[10px] font-black text-white shadow-md shadow-brand-cyan/20">
-                      A
-                    </div>
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Process View</span>
+                    <span className="text-[11px] font-bold text-brand-navy group-hover:text-brand-gold transition-colors flex items-center gap-1">
+                      Details <MoveRight size={12} />
+                    </span>
                   </div>
-                  <span className="text-[10px] font-black text-brand-navy uppercase tracking-[0.2em] group-hover:text-brand-red transition-colors flex items-center">
-                    Project Details <MoveRight size={14} className="ml-2" />
-                  </span>
                 </div>
               </div>
-            </div>
+            </FadeInSection>
           ))}
         </div>
       </div>
 
-      {/* Modal / Detailed Project View */}
       {activeProject && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-10 overflow-hidden">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8 overflow-hidden">
           <div 
-            className="absolute inset-0 bg-brand-navy/95 backdrop-blur-lg" 
+            className="absolute inset-0 bg-brand-charcoal/90 backdrop-blur-md" 
             onClick={() => setActiveProject(null)} 
           />
-          <div className="relative bg-white w-full max-w-6xl max-h-full rounded-[3rem] shadow-2xl overflow-y-auto animate-in zoom-in-95 duration-300">
-            <button 
-              onClick={() => setActiveProject(null)}
-              className="sticky top-6 float-right mr-6 z-50 p-4 bg-slate-100 hover:bg-brand-red hover:text-white text-brand-navy rounded-full transition-all shadow-lg"
-            >
-              <ChevronRight className="rotate-45" size={24} />
-            </button>
+          <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl shadow-2xl overflow-y-auto animate-fade-up">
+            <div className="sticky top-0 z-50 flex justify-end p-5">
+              <button 
+                onClick={() => setActiveProject(null)}
+                className="p-3 bg-brand-navy/5 hover:bg-brand-red hover:text-white text-brand-navy rounded-full transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+            </div>
             
-            <div className="p-8 lg:p-20">
-              <div className="mb-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-1 bg-brand-gold rounded-full"></div>
-                  <span className="text-brand-gold font-black text-xs tracking-[0.3em] uppercase">{activeProject.category} Excellence</span>
-                </div>
-                <h2 className="text-4xl lg:text-6xl font-black text-brand-navy mb-6">{activeProject.title}</h2>
-                <p className="text-slate-500 text-xl max-w-3xl font-medium leading-relaxed">{activeProject.description}</p>
+            <div className="px-8 pb-12 lg:px-16 lg:pb-16 -mt-4">
+              <div className="mb-10">
+                <span className="inline-block text-brand-gold font-bold text-xs tracking-[0.3em] uppercase mb-3 px-3 py-1 bg-brand-gold/5 rounded-full">{activeProject.category}</span>
+                <h2 className="text-4xl lg:text-5xl text-brand-navy mb-4">{activeProject.title}</h2>
+                <p className="text-brand-charcoal/50 text-lg max-w-3xl leading-relaxed">{activeProject.description}</p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-10 mb-16">
+              <div className="grid lg:grid-cols-2 gap-8 mb-12">
                 <div className="group">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-brand-red text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Initial State</span>
-                    <h4 className="text-sm font-black text-brand-navy uppercase tracking-widest">Before</h4>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="bg-brand-red/10 text-brand-red text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Before</span>
                   </div>
-                  <div className="relative aspect-video rounded-3xl overflow-hidden shadow-inner border-4 border-slate-50">
+                  <div className="relative aspect-video rounded-2xl overflow-hidden border border-brand-navy/5">
                     <img 
                       src={activeProject.beforeImage} 
                       alt="Project Before" 
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover grayscale-[50%] group-hover:grayscale-0 transition-all duration-700"
                     />
                   </div>
                 </div>
                 <div className="group">
-                  <div className="flex items-center gap-3 mb-4">
-                     <span className="bg-brand-cyan text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Elite Finish</span>
-                    <h4 className="text-sm font-black text-brand-navy uppercase tracking-widest">After</h4>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">After</span>
                   </div>
-                  <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/20 border-4 border-brand-cyan/20">
+                  <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg shadow-brand-navy/10 border border-brand-cyan/10">
                     <img 
                       src={activeProject.afterImages[0]} 
                       alt="Project After" 
-                      className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="mb-20">
-                <h4 className="text-xs font-black text-slate-400 uppercase tracking-[0.4em] mb-10 text-center">Craftsmanship Details</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                  {activeProject.afterImages.slice(1).map((img, i) => (
-                    <div key={i} className="aspect-square rounded-2xl overflow-hidden shadow-lg border border-slate-100 transition-transform hover:scale-105">
-                      <img src={img} alt={`Detail ${i}`} className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                  <div className="aspect-square rounded-2xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 p-4 text-center">
-                    <Layers size={32} className="mb-2 opacity-50" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Premium Finishes</span>
+              {activeProject.afterImages.length > 1 && (
+                <div className="mb-12">
+                  <h4 className="text-xs font-bold text-brand-charcoal/30 uppercase tracking-[0.3em] mb-6">Detail Shots</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {activeProject.afterImages.slice(1).map((img, i) => (
+                      <div key={i} className="aspect-square rounded-2xl overflow-hidden border border-brand-navy/5 transition-transform hover:scale-[1.03] shadow-sm hover:shadow-md">
+                        <img src={img} alt={`Detail ${i}`} className="w-full h-full object-cover" />
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+              )}
 
-              <div className="bg-brand-navy rounded-[3rem] p-10 lg:p-20 border border-white/10 relative overflow-hidden text-center shadow-2xl shadow-brand-navy/30">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-brand-gold/20 rounded-full blur-3xl -mt-20"></div>
-                <Quote className="text-brand-gold mx-auto mb-8" size={64} />
-                <div className="relative z-10 max-w-4xl mx-auto">
-                  <p className="text-2xl lg:text-3xl font-bold text-white italic leading-relaxed mb-10">
+              <div className="bg-brand-navy rounded-3xl p-8 lg:p-14 relative overflow-hidden text-center">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl -mt-20"></div>
+                <Quote className="text-brand-gold/30 mx-auto mb-6" size={48} />
+                <div className="relative z-10 max-w-3xl mx-auto">
+                  <p className="text-xl lg:text-2xl font-medium text-white italic leading-relaxed mb-8">
                     "{activeProject.testimonial.text}"
                   </p>
-                  <div className="h-1 w-12 bg-brand-red mx-auto mb-6"></div>
-                  <div>
-                    <p className="font-black text-brand-gold text-xl uppercase tracking-widest">{activeProject.testimonial.author}</p>
-                    <p className="text-brand-cyan text-sm font-bold mt-1 uppercase tracking-tighter">{activeProject.testimonial.location}</p>
-                  </div>
+                  <div className="w-8 h-0.5 bg-brand-gold mx-auto mb-4"></div>
+                  <p className="font-extrabold text-brand-gold text-sm uppercase tracking-wider">{activeProject.testimonial.author}</p>
+                  <p className="text-brand-cyan/60 text-xs font-semibold mt-1 tracking-wider">{activeProject.testimonial.location}</p>
                 </div>
               </div>
             </div>

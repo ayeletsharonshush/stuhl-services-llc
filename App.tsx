@@ -10,7 +10,6 @@ import { Section } from './types';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>(Section.HOME);
 
-  // Scroll to top when switching sections
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeSection]);
@@ -34,7 +33,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-brand-cyan/20 selection:text-brand-navy">
+    <div className="min-h-screen flex flex-col">
       <Navbar activeSection={activeSection} setSection={setActiveSection} />
       
       <main className="flex-grow">
@@ -43,14 +42,13 @@ const App: React.FC = () => {
 
       <Footer setSection={setActiveSection} />
       
-      {/* Floating CTA for Mobile */}
       {activeSection !== Section.CONTACT && (
-        <div className="fixed bottom-8 right-8 md:hidden z-40">
+        <div className="fixed bottom-6 right-6 md:hidden z-40">
           <button 
             onClick={() => setActiveSection(Section.CONTACT)}
-            className="bg-brand-navy text-white p-5 rounded-2xl shadow-2xl hover:bg-brand-red transition-all flex items-center justify-center animate-bounce shadow-brand-navy/40"
+            className="bg-brand-gold text-white px-6 py-3.5 rounded-full shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:shadow-brand-gold/40 transition-all flex items-center gap-2 font-bold text-sm"
           >
-            <span className="font-black uppercase tracking-widest text-[10px] px-2">Free Quote</span>
+            Free Quote
           </button>
         </div>
       )}
