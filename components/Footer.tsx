@@ -76,12 +76,18 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
           </div>
         </div>
         
-        <div className="mb-10 rounded-2xl overflow-hidden">
+        <div className="relative mb-10 rounded-2xl overflow-hidden">
           <img 
             src="/images/owner.jpg" 
             alt="Owner of Stuhl Services" 
             className="w-full h-auto object-cover"
           />
+          <div className="absolute top-6 left-6 sm:top-8 sm:left-8">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl px-5 py-3 max-w-[200px]">
+              <p className="text-brand-navy font-bold text-sm sm:text-base">My latest remodel!</p>
+              <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white/95 rotate-45"></div>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center text-white/20 text-xs pt-10 border-t border-white/5">
