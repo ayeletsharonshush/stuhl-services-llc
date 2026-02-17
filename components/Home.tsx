@@ -91,7 +91,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 You <span className="text-gradient italic">Love.</span>
               </h1>
               <p className="text-lg text-brand-charcoal/60 mb-10 max-w-lg leading-relaxed animate-fade-up" style={{ animationDelay: '200ms' }}>
-                Specializing in premium bathrooms, basements and kitchens and custom work. <span className="text-brand-navy font-semibold">Stuhl Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
+                Specializing in premium bathrooms, basements, kitchens and custom work. <span className="text-brand-navy font-semibold">Stuhl Services LLC</span> is a local family-owned company built on trust, quality craftsmanship, and exceptional references.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: '300ms' }}>
                 <button 
