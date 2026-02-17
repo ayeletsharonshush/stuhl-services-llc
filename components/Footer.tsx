@@ -78,7 +78,7 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
         
         <div className="mb-10 rounded-2xl overflow-hidden">
           <img 
-            src="/images/owner.png" 
+            src="/images/owner.jpg" 
             alt="Owner of Stuhl Services" 
             className="w-full h-auto object-cover"
           />

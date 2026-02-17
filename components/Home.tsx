@@ -113,7 +113,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
             <div className="relative animate-fade-up" style={{ animationDelay: '400ms' }}>
               <div className="flex items-center gap-3 mb-5 animate-fade-up lg:hidden" style={{ animationDelay: '600ms' }}>
                 <img 
-                  src="/images/owner.png" 
+                  src="/images/owner.jpg" 
                   alt="Owner of Stuhl Services" 
                   className="w-12 h-12 rounded-full object-cover border-2 border-brand-gold shadow-lg flex-shrink-0"
                 />
@@ -129,7 +129,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 </div>
                 <div className="mt-4 ml-2">
                   <img 
-                    src="/images/owner.png" 
+                    src="/images/owner.jpg" 
                     alt="Owner of Stuhl Services" 
                     className="w-16 h-16 rounded-full object-cover border-2 border-brand-gold shadow-lg"
                   />
