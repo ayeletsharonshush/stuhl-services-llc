@@ -15,6 +15,7 @@ export const PROJECTS: Project[] = [
       '/images/bath-millington-after2.png',
       '/images/bath-millington-after3.png'
     ],
+    videoUrl: '/images/45-northfield-video.mp4',
     testimonial: {
       text: "Thank you Sharon for a stellar job! You were fantastic to work with, very thorough and professional in your approach and always gave the right recommendations for choice of material, colors and fittings. Super happy with the final result!!",
       author: "Millington Homeowner",
@@ -34,6 +35,7 @@ export const PROJECTS: Project[] = [
       '/images/bath-watchung-after2.png',
       '/images/bath-watchung-after3.png'
     ],
+    videoUrl: '/images/bath-watchung-video.mp4',
     testimonial: {
       text: "We completed our master bath remodeling with Stuhl Services. We were very happy with how well everything came out. It was a pleasure working with Sharon. We would highly recommend Stuhl Services for any services that you may need.",
       author: "Watchung Homeowner",
@@ -54,6 +56,7 @@ export const PROJECTS: Project[] = [
       '/images/bath-newprov-after3.png',
       '/images/bath-newprov-after4.png'
     ],
+    videoUrl: '/images/bath-newprov-video.mp4',
     testimonial: {
       text: "Wow, we love it!!! It came out much better than we anticipated.",
       author: "New Providence Homeowner",
@@ -91,6 +94,7 @@ export const PROJECTS: Project[] = [
       '/images/bsmt-berkeley-after1.png',
       '/images/bsmt-berkeley-after2.png'
     ],
+    videoUrl: '/images/bsmt-berkeley-video.mp4',
     testimonial: {
       text: "Thank you Sharon of Stuhl Services LLC for renovating our basement. We are very pleased with the results. I suggest you reach out to Sharon for your next remodeling project!",
       author: "Berkeley Heights Homeowner",

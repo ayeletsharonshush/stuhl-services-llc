@@ -58,26 +58,27 @@ const Contact: React.FC = () => {
               </p>
 
               <div className="space-y-8">
-                <div className="flex gap-4 group">
+                <a href="tel:9087235922" className="flex gap-4 group">
                   <div className="w-12 h-12 bg-gradient-to-br from-brand-gold to-amber-600 rounded-xl flex items-center justify-center shrink-0 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Phone size={20} />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-brand-navy text-sm mb-0.5">Direct Line</h4>
-                    <p className="text-brand-charcoal/60 font-semibold">(555) 123-4567</p>
-                    <p className="text-[10px] text-brand-charcoal/30 font-bold uppercase tracking-wider mt-0.5">Mon-Sat, 8am - 6pm</p>
+                    <p className="text-brand-charcoal/60 font-semibold">(908) 723-5922</p>
+                    <p className="text-[10px] text-brand-charcoal/30 font-bold uppercase tracking-wider mt-0.5">Tap to call</p>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex gap-4 group">
+                <a href="mailto:stuhlservices@gmail.com" className="flex gap-4 group">
                   <div className="w-12 h-12 bg-gradient-to-br from-brand-red to-rose-600 rounded-xl flex items-center justify-center shrink-0 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Mail size={20} />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-brand-navy text-sm mb-0.5">Email Inquiry</h4>
-                    <p className="text-brand-charcoal/60 font-semibold">estimate@stuhlservices.com</p>
+                    <p className="text-brand-charcoal/60 font-semibold">stuhlservices@gmail.com</p>
+                    <p className="text-[10px] text-brand-charcoal/30 font-bold uppercase tracking-wider mt-0.5">Tap to email</p>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex gap-4 group">
                   <div className="w-12 h-12 bg-gradient-to-br from-brand-cyan to-teal-600 rounded-xl flex items-center justify-center shrink-0 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">

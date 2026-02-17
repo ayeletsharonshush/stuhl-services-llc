@@ -13,6 +13,7 @@ export interface Project {
   description: string;
   beforeImage: string;
   afterImages: string[];
+  videoUrl?: string;
   testimonial: Testimonial;
 }
 

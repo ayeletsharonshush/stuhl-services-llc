@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
-import { Quote, MoveRight, X, Eye, MapPin } from 'lucide-react';
+import { Quote, MoveRight, X, Eye, MapPin, Play } from 'lucide-react';
 
 const FadeInSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = '', delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -88,6 +88,11 @@ const Portfolio: React.FC = () => {
                     <span className="bg-white/90 backdrop-blur-md text-brand-navy text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">
                       {project.category}
                     </span>
+                    {project.videoUrl && (
+                      <span className="bg-brand-gold/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+                        <Play size={10} fill="white" /> Video
+                      </span>
+                    )}
                   </div>
                   <div className="absolute bottom-5 left-5">
                     <span className="bg-brand-navy/80 backdrop-blur-md text-white text-[10px] font-semibold px-3 py-1.5 rounded-full flex items-center gap-1">
@@ -184,6 +189,27 @@ const Portfolio: React.FC = () => {
                         <img src={img} alt={`Detail ${i + 1}`} className="w-full h-auto object-contain bg-slate-50" />
                       </div>
                     ))}
+                  </div>
+                </div>
+              )}
+
+              {activeProject.videoUrl && (
+                <div className="mb-12">
+                  <h4 className="text-xs font-bold text-brand-charcoal/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+                    <Play size={14} className="text-brand-gold" /> Project Video Walkthrough
+                  </h4>
+                  <div className="rounded-2xl overflow-hidden border border-brand-navy/5 shadow-lg bg-black">
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-auto max-h-[500px] mx-auto"
+                      poster={activeProject.afterImages[0]}
+                    >
+                      <source src={activeProject.videoUrl} type="video/quicktime" />
+                      <source src={activeProject.videoUrl} type="video/mp4" />
+                      Your browser does not support video playback.
+                    </video>
                   </div>
                 </div>
               )}

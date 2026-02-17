@@ -111,9 +111,20 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
             </div>
             
             <div className="relative animate-fade-up" style={{ animationDelay: '400ms' }}>
+              <div className="flex items-center gap-3 mb-4 lg:absolute lg:-left-8 lg:top-8 lg:z-20 lg:flex-col lg:items-start lg:mb-0 animate-fade-up" style={{ animationDelay: '600ms' }}>
+                <img 
+                  src="/images/owner.png" 
+                  alt="Owner of Stuhl Services" 
+                  className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-brand-gold shadow-lg order-1 lg:order-2 lg:mt-4 lg:ml-2"
+                />
+                <div className="relative bg-white rounded-2xl shadow-xl px-5 py-3 order-2 lg:order-1">
+                  <p className="text-brand-navy font-bold text-sm">My latest remodel!</p>
+                  <div className="absolute top-1/2 -left-2 w-4 h-4 bg-white rotate-45 shadow-sm -translate-y-1/2 lg:top-auto lg:left-12 lg:-bottom-2 lg:translate-y-0"></div>
+                </div>
+              </div>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/15">
                 <img 
-                  src="/images/hero.jpg" 
+                  src="/images/hero-main.jpg" 
                   alt="Modern Home Renovation" 
                   className="w-full h-[500px] object-cover"
                 />
@@ -223,8 +234,8 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                       "Hands-on owner working on all projects for maximum accountability",
                       "Specialized in Bathroom, Basement and Kitchen transformations",
                       "Transparent project timelines & cost estimates",
-                      "\"We Deliver What We Promised\" — our motto",
-                      "Licensed: 13VH11735700"
+                      "Professional cleaning at project end for maximum satisfaction",
+                      "Licensed, Insured and Bonded"
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="bg-brand-gold/20 p-1 rounded-full mt-0.5 shrink-0">

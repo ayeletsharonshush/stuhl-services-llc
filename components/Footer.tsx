@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Section } from '../types';
-import { Facebook, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Facebook, Instagram, ArrowUpRight, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -24,15 +24,20 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
             <p className="text-white/40 max-w-sm mb-8 leading-relaxed text-sm">
               Stuhl Services LLC is a local, owner-operated remodeling company specializing in bathrooms, basements and kitchens. Built on trust and quality.
             </p>
+            <div className="space-y-3 mb-6">
+              <a href="tel:9087235922" className="flex items-center gap-2 text-white/40 hover:text-brand-gold transition-colors text-sm">
+                <Phone size={14} /> (908) 723-5922
+              </a>
+              <a href="mailto:stuhlservices@gmail.com" className="flex items-center gap-2 text-white/40 hover:text-brand-gold transition-colors text-sm">
+                <Mail size={14} /> stuhlservices@gmail.com
+              </a>
+            </div>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl text-white/40 hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300">
+              <a href="https://www.facebook.com/stuhlservicesLLC" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl text-white/40 hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl text-white/40 hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300">
+              <a href="https://www.instagram.com/stuhl_services" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl text-white/40 hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300">
                 <Instagram size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl text-white/40 hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300">
-                <Linkedin size={18} />
               </a>
             </div>
           </div>
@@ -71,6 +76,14 @@ const Footer: React.FC<FooterProps> = ({ setSection }) => {
           </div>
         </div>
         
+        <div className="mb-10 rounded-2xl overflow-hidden">
+          <img 
+            src="/images/owner.png" 
+            alt="Owner of Stuhl Services" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
         <div className="flex flex-col md:flex-row justify-between items-center text-white/20 text-xs pt-10 border-t border-white/5">
           <p>&copy; 2025 Stuhl Services LLC. All rights reserved.</p>
           <div className="flex gap-8 mt-4 md:mt-0">
