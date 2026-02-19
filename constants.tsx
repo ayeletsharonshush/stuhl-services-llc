@@ -9,8 +9,11 @@ export const PROJECTS: Project[] = [
     location: 'Millington, NJ',
     description: 'A great transformation with lots of new design items. We created an oasis that includes an in-ceiling shower head with changing lights and music. Diamond shaped tiles aligned on both floor and shower walls, including the niche and bench.',
     beforeImage: '/images/bath-millington-before.png',
+    beforeImages: [
+      '/images/bath-millington-before.png',
+      '/images/bath-millington-before2.png'
+    ],
     afterImages: [
-      '/images/bath-millington-thumb.jpg',
       '/images/bath-millington-after1.png',
       '/images/bath-millington-after2.png',
       '/images/bath-millington-after3.png'
@@ -29,9 +32,11 @@ export const PROJECTS: Project[] = [
     location: 'Watchung, NJ',
     description: 'From a gloomy and uninviting en-suite to a bright modern oasis. We enlarged the shower area with a floating bench and niche, converted the inbuilt bathtub to a free-standing tub, added an extra sink to the vanity, and finished with new vanity lights, powered mirrors, and spot ceiling lights.',
     beforeImage: '/images/bath-watchung-before.png',
+    beforeImages: [
+      '/images/bath-watchung-before.png',
+      '/images/bath-watchung-before2.png'
+    ],
     afterImages: [
-      '/images/bath-watchung-thumb.jpg',
-      '/images/bath-watchung-after1.png',
       '/images/bath-watchung-after2.png',
       '/images/bath-watchung-after3.png'
     ],
@@ -49,12 +54,13 @@ export const PROJECTS: Project[] = [
     location: 'New Providence, NJ',
     description: 'This bathroom was completely unused. We converted it to a larger curb-less shower with a bigger vanity, smooth ceiling, and new sconce lights. We also closed some adjacent attic space and converted it to a proper storage area.',
     beforeImage: '/images/bath-newprov-before.png',
+    beforeImages: [
+      '/images/bath-newprov-before.png',
+      '/images/bath-newprov-before2.png'
+    ],
     afterImages: [
-      '/images/bath-newprov-thumb.png',
       '/images/bath-newprov-after1.png',
-      '/images/bath-newprov-after2.png',
-      '/images/bath-newprov-after3.png',
-      '/images/bath-newprov-after4.png'
+      '/images/bath-newprov-after2.png'
     ],
     videoUrl: '/images/bath-newprov-video.mp4',
     testimonial: {
@@ -70,10 +76,12 @@ export const PROJECTS: Project[] = [
     location: 'New Providence, NJ',
     description: 'An unused storage place converted to a fully functional home entertainment hub with an adjacent dancing studio, whilst keeping some space for storage. Exactly what the customer wanted.',
     beforeImage: '/images/bsmt-newprov-before.png',
+    beforeImages: [
+      '/images/bsmt-newprov-before2.png',
+      '/images/bsmt-newprov-before3.png'
+    ],
     afterImages: [
       '/images/bsmt-newprov-thumb.png',
-      '/images/bsmt-newprov-after1.png',
-      '/images/bsmt-newprov-after2.png',
       '/images/bsmt-newprov-after3.png'
     ],
     testimonial: {
@@ -90,9 +98,9 @@ export const PROJECTS: Project[] = [
     description: 'Over 620 square feet of unused space transformed into a fully livable area, an office space, and a full bathroom. A complete basement transformation.',
     beforeImage: '/images/bsmt-berkeley-before.png',
     afterImages: [
-      '/images/bsmt-berkeley-thumb.png',
       '/images/bsmt-berkeley-after1.png',
-      '/images/bsmt-berkeley-after2.png'
+      '/images/bsmt-berkeley-after2.png',
+      '/images/bsmt-berkeley-after3.png'
     ],
     videoUrl: '/images/bsmt-berkeley-video.mp4',
     testimonial: {
@@ -109,8 +117,6 @@ export const PROJECTS: Project[] = [
     description: 'A flooded carpeted basement with mold growing on walls and molding. We treated the mold, cleaned and painted the walls, and installed new vinyl flooring. The final result was amazing.',
     beforeImage: '/images/bsmt-warren-before.png',
     afterImages: [
-      '/images/bsmt-warren-thumb.png',
-      '/images/bsmt-warren-after1.png',
       '/images/bsmt-warren-after2.png',
       '/images/bsmt-warren-after3.png'
     ],
@@ -127,9 +133,12 @@ export const PROJECTS: Project[] = [
     location: 'Gillette, NJ',
     description: 'A total transformation from an original 1985 basic kitchen to a brand new modern design with all new appliances. We used IKEA cabinetry enhanced with updated doors, custom fillers, gold hardware, and patterned tiles for amazing results at a lower cost.',
     beforeImage: '/images/kitchen-gillette-before.png',
+    beforeImages: [
+      '/images/kitchen-gillette-before.png',
+      '/images/kitchen-gillette-before2.png'
+    ],
     afterImages: [
       '/images/kitchen-gillette-thumb.png',
-      '/images/kitchen-gillette-after1.png',
       '/images/kitchen-gillette-after2.png',
       '/images/kitchen-gillette-after3.png',
       '/images/kitchen-gillette-after4.png'
@@ -146,9 +155,14 @@ export const PROJECTS: Project[] = [
     category: 'Kitchen',
     location: 'Warren, NJ',
     description: 'A complete kitchen refresh featuring modern cabinetry, updated countertops, and contemporary finishes that brought new life to this Warren home.',
-    beforeImage: '/images/kitchen-warren-thumb.png',
+    beforeImage: '/images/kitchen-warren-before.png',
+    beforeImages: [
+      '/images/kitchen-warren-before.png',
+      '/images/kitchen-warren-before2.png'
+    ],
     afterImages: [
-      '/images/kitchen-warren-thumb.png'
+      '/images/kitchen-warren-thumb.png',
+      '/images/kitchen-warren-after1.png'
     ],
     testimonial: {
       text: "We Deliver What We Promised — that is the Stuhl Services motto and they truly live by it.",

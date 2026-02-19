@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Section } from '../types';
 import Logo from './Logo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: Section;
@@ -73,12 +73,22 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setSection }) => {
             </button>
           </div>
 
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-brand-navy/5 transition-colors"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            {activeSection !== Section.HOME && (
+              <button
+                onClick={() => handleNav(Section.HOME)}
+                className="p-2 rounded-xl bg-brand-navy/5 hover:bg-brand-navy/10 transition-colors"
+              >
+                <Home size={22} className="text-brand-navy" />
+              </button>
+            )}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 rounded-xl hover:bg-brand-navy/5 transition-colors"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 

@@ -153,40 +153,43 @@ const Portfolio: React.FC = () => {
                 <p className="text-brand-charcoal/50 text-lg max-w-3xl leading-relaxed">{activeProject.description}</p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-8 mb-12">
-                <div className="group">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-brand-red/10 text-brand-red text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Before</span>
+              <div className="grid grid-cols-2 gap-4 mb-12">
+                {(activeProject.beforeImages || [activeProject.beforeImage]).map((img, i) => (
+                  <div key={`before-${i}`} className="group">
+                    <div className="relative rounded-2xl overflow-hidden border border-brand-navy/5 aspect-[9/16]">
+                      <img 
+                        src={img} 
+                        alt={`Before ${i + 1}`} 
+                        className="w-full h-full object-cover bg-slate-50"
+                      />
+                      <span className="absolute top-3 left-3 bg-brand-red/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Before</span>
+                    </div>
                   </div>
-                  <div className="relative rounded-2xl overflow-hidden border border-brand-navy/5">
-                    <img 
-                      src={activeProject.beforeImage} 
-                      alt="Project Before" 
-                      className="w-full h-auto object-contain bg-slate-50"
-                    />
-                  </div>
-                </div>
-                <div className="group">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">After</span>
-                  </div>
-                  <div className="relative rounded-2xl overflow-hidden shadow-lg shadow-brand-navy/10 border border-brand-cyan/10">
-                    <img 
-                      src={activeProject.afterImages[0]} 
-                      alt="Project After" 
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {activeProject.afterImages.length > 1 && (
+              <div className="space-y-4 mb-12">
+                {activeProject.afterImages.map((img, i) => (
+                  <div key={`after-${i}`} className="group">
+                    <div className={`relative ${activeProject.category === 'Kitchen' ? 'aspect-[16/9]' : 'aspect-[9/16]'} rounded-2xl overflow-hidden shadow-lg shadow-brand-navy/10 border border-brand-cyan/10`}>
+                      <img 
+                        src={img} 
+                        alt={`After ${i + 1}`} 
+                        className="w-full h-full object-cover"
+                      />
+                      <span className="absolute top-3 left-3 bg-brand-cyan/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">After</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {activeProject.afterImages.length > 1 && false && (
                 <div className="mb-12">
-                  <h4 className="text-xs font-bold text-brand-charcoal/30 uppercase tracking-[0.3em] mb-6">Project Details</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {activeProject.afterImages.slice(1).map((img, i) => (
-                      <div key={i} className="rounded-2xl overflow-hidden border border-brand-navy/5 transition-transform hover:scale-[1.02] shadow-sm hover:shadow-md">
-                        <img src={img} alt={`Detail ${i + 1}`} className="w-full h-auto object-contain bg-slate-50" />
+                      <div key={i} className="relative rounded-2xl overflow-hidden border border-brand-navy/5 transition-transform hover:scale-[1.02] shadow-sm hover:shadow-md">
+                        <img src={img} alt={`After ${i + 2}`} className="w-full h-auto object-contain bg-slate-50" />
+                        <span className="absolute top-3 left-3 bg-brand-cyan/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">After</span>
                       </div>
                     ))}
                   </div>

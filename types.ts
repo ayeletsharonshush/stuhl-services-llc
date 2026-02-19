@@ -12,6 +12,7 @@ export interface Project {
   location: string;
   description: string;
   beforeImage: string;
+  beforeImages?: string[];
   afterImages: string[];
   videoUrl?: string;
   testimonial: Testimonial;
