@@ -92,11 +92,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'bsmt-berkeley',
-    title: 'Complete Living Space & Office',
+    title: 'Complete Living Space, Office & Full Bathroom',
     category: 'Basement',
     location: 'Berkeley Heights, NJ',
     description: 'Over 620 square feet of unused space transformed into a fully livable area, an office space, and a full bathroom. A complete basement transformation.',
     beforeImage: '/images/bsmt-berkeley-before.png',
+    beforeImages: ['/images/bsmt-berkeley-before.png', '/images/basement-berkeley-before2.png'],
     afterImages: [
       '/images/bsmt-berkeley-after1.png',
       '/images/bsmt-berkeley-after2.png',
