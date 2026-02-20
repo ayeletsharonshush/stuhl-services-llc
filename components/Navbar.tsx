@@ -77,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, setSection }) => {
             {activeSection !== Section.HOME && (
               <button
                 onClick={() => handleNav(Section.HOME)}
-                className="p-2 rounded-xl bg-brand-navy/5 hover:bg-brand-navy/10 transition-colors"
+                className="p-2 rounded-xl bg-transparent hover:bg-brand-navy/5 transition-colors"
               >
                 <Home size={22} className="text-brand-navy" />
               </button>

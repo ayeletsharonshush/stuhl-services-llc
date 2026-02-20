@@ -103,7 +103,7 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 </button>
                 <button 
                   onClick={onPortfolioClick}
-                  className="px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:bg-brand-navy/5 transition-all duration-300 border border-brand-navy/10 text-sm tracking-wide shadow-sm"
+                  className="px-8 py-4 bg-brand-navy text-white font-bold rounded-full hover:bg-brand-navy/90 transition-all duration-300 border-2 border-brand-navy text-sm tracking-wide shadow-md shadow-brand-navy/20 hover:shadow-lg hover:shadow-brand-navy/30"
                 >
                   View Our Work
                 </button>

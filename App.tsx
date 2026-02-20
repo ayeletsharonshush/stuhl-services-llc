@@ -9,9 +9,19 @@ import { Section } from './types';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>(Section.HOME);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setHasScrolled(false);
   }, [activeSection]);
 
   const renderContent = () => {
@@ -42,8 +52,8 @@ const App: React.FC = () => {
 
       <Footer setSection={setActiveSection} />
       
-      {activeSection !== Section.CONTACT && (
-        <div className="fixed bottom-6 right-6 md:hidden z-40">
+      {activeSection !== Section.CONTACT && hasScrolled && (
+        <div className="fixed bottom-20 right-6 md:hidden z-40 animate-fade-in">
           <button 
             onClick={() => setActiveSection(Section.CONTACT)}
             className="bg-brand-gold text-white px-6 py-3.5 rounded-full shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:shadow-brand-gold/40 transition-all flex items-center gap-2 font-bold text-sm"
