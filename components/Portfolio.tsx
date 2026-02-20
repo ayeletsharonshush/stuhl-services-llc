@@ -2,7 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
-import { Quote, MoveRight, X, Eye, MapPin, Play } from 'lucide-react';
+import { Quote, MoveRight, X, Eye, MapPin, Play, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const thumb = (src: string) => src.replace('/images/', '/images/thumbs/');
 
 const FadeInSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = '', delay = 0 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,21 +30,98 @@ const FadeInSection: React.FC<{ children: React.ReactNode; className?: string; d
   );
 };
 
+const Lightbox: React.FC<{
+  images: string[];
+  initialIndex: number;
+  onClose: () => void;
+}> = ({ images, initialIndex, onClose }) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowRight') setCurrentIndex(i => (i + 1) % images.length);
+      if (e.key === 'ArrowLeft') setCurrentIndex(i => (i - 1 + images.length) % images.length);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [images.length, onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95" onClick={onClose}>
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all"
+      >
+        <X size={24} />
+      </button>
+
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={(e) => { e.stopPropagation(); setCurrentIndex(i => (i - 1 + images.length) % images.length); }}
+            className="absolute left-4 z-10 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all"
+          >
+            <ChevronLeft size={28} />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); setCurrentIndex(i => (i + 1) % images.length); }}
+            className="absolute right-4 z-10 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all"
+          >
+            <ChevronRight size={28} />
+          </button>
+        </>
+      )}
+
+      <img
+        src={images[currentIndex]}
+        alt={`Photo ${currentIndex + 1}`}
+        className="max-w-[95vw] max-h-[90vh] object-contain"
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {images.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentIndex ? 'bg-white scale-125' : 'bg-white/40'}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Portfolio: React.FC = () => {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>('All');
+  const [lightboxImages, setLightboxImages] = useState<string[] | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const categories = ['All', 'Bathroom', 'Basement', 'Kitchen'];
   const filteredProjects = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
 
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+  };
+
   useEffect(() => {
-    if (activeProject) {
+    if (activeProject || lightboxImages) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
-  }, [activeProject]);
+  }, [activeProject, lightboxImages]);
+
+  const getAllProjectImages = (project: Project): string[] => {
+    const befores = project.beforeImages || [project.beforeImage];
+    return [...befores, ...project.afterImages];
+  };
 
   return (
     <div className="py-28 bg-brand-cream">
@@ -80,9 +159,10 @@ const Portfolio: React.FC = () => {
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img 
-                    src={project.afterImages[0]} 
+                    src={thumb(project.afterImages[0])} 
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute top-5 left-5 flex gap-2">
                     <span className="bg-white/90 backdrop-blur-md text-brand-navy text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-sm">
@@ -151,50 +231,59 @@ const Portfolio: React.FC = () => {
                 </div>
                 <h2 className="text-4xl lg:text-5xl text-brand-navy mb-4">{activeProject.title}</h2>
                 <p className="text-brand-charcoal/50 text-lg max-w-3xl leading-relaxed">{activeProject.description}</p>
+                <p className="text-brand-charcoal/30 text-xs mt-3 italic">Tap any photo to view full size</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-12">
                 {(activeProject.beforeImages || [activeProject.beforeImage]).map((img, i) => (
                   <div key={`before-${i}`} className="group">
-                    <div className="relative rounded-2xl overflow-hidden border border-brand-navy/5 aspect-[9/16]">
+                    <div
+                      className="relative rounded-2xl overflow-hidden border border-brand-navy/5 aspect-[9/16] cursor-pointer"
+                      onClick={(e) => { e.stopPropagation(); openLightbox(getAllProjectImages(activeProject), i); }}
+                    >
                       <img 
-                        src={img} 
+                        src={thumb(img)} 
                         alt={`Before ${i + 1}`} 
-                        className="w-full h-full object-cover bg-slate-50"
+                        className="w-full h-full object-cover bg-slate-50 transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
                       />
                       <span className="absolute top-3 left-3 bg-brand-red/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Before</span>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 p-2 rounded-full">
+                          <Eye size={18} className="text-brand-navy" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
 
               <div className="space-y-4 mb-12">
-                {activeProject.afterImages.map((img, i) => (
-                  <div key={`after-${i}`} className="group">
-                    <div className={`relative ${activeProject.category === 'Kitchen' ? 'aspect-[16/9]' : 'aspect-[9/16]'} rounded-2xl overflow-hidden shadow-lg shadow-brand-navy/10 border border-brand-cyan/10`}>
-                      <img 
-                        src={img} 
-                        alt={`After ${i + 1}`} 
-                        className="w-full h-full object-cover"
-                      />
-                      <span className="absolute top-3 left-3 bg-brand-cyan/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">After</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {activeProject.afterImages.length > 1 && false && (
-                <div className="mb-12">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {activeProject.afterImages.slice(1).map((img, i) => (
-                      <div key={i} className="relative rounded-2xl overflow-hidden border border-brand-navy/5 transition-transform hover:scale-[1.02] shadow-sm hover:shadow-md">
-                        <img src={img} alt={`After ${i + 2}`} className="w-full h-auto object-contain bg-slate-50" />
+                {activeProject.afterImages.map((img, i) => {
+                  const beforeCount = (activeProject.beforeImages || [activeProject.beforeImage]).length;
+                  return (
+                    <div key={`after-${i}`} className="group">
+                      <div
+                        className={`relative ${activeProject.category === 'Kitchen' ? 'aspect-[16/9]' : 'aspect-[9/16]'} rounded-2xl overflow-hidden shadow-lg shadow-brand-navy/10 border border-brand-cyan/10 cursor-pointer`}
+                        onClick={(e) => { e.stopPropagation(); openLightbox(getAllProjectImages(activeProject), beforeCount + i); }}
+                      >
+                        <img 
+                          src={thumb(img)} 
+                          alt={`After ${i + 1}`} 
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
                         <span className="absolute top-3 left-3 bg-brand-cyan/90 text-white text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">After</span>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 p-2 rounded-full">
+                            <Eye size={18} className="text-brand-navy" />
+                          </div>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                    </div>
+                  );
+                })}
+              </div>
 
               {activeProject.videoUrl && (
                 <div className="mb-12">
@@ -207,7 +296,7 @@ const Portfolio: React.FC = () => {
                       playsInline
                       preload="metadata"
                       className="w-full h-auto max-h-[500px] mx-auto"
-                      poster={activeProject.afterImages[0]}
+                      poster={thumb(activeProject.afterImages[0])}
                     >
                       <source src={activeProject.videoUrl} type="video/quicktime" />
                       <source src={activeProject.videoUrl} type="video/mp4" />
@@ -232,6 +321,14 @@ const Portfolio: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {lightboxImages && (
+        <Lightbox
+          images={lightboxImages}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxImages(null)}
+        />
       )}
     </div>
   );
