@@ -103,21 +103,29 @@ const Home: React.FC<HomeProps> = ({ onPortfolioClick, onContactClick }) => {
                 </button>
                 <button 
                   onClick={onPortfolioClick}
-                  className="px-8 py-4 bg-brand-navy text-white font-bold rounded-full hover:bg-brand-navy/90 transition-all duration-300 border-2 border-brand-navy text-sm tracking-wide shadow-md shadow-brand-navy/20 hover:shadow-lg hover:shadow-brand-navy/30"
+                  className="group px-8 py-4 bg-brand-navy text-white font-bold rounded-full hover:bg-brand-navy/90 transition-all duration-300 border-2 border-brand-navy text-sm tracking-wide shadow-md shadow-brand-navy/20 hover:shadow-lg hover:shadow-brand-navy/30 flex items-center justify-center"
                 >
                   View Our Work
+                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
             
             <div className="relative animate-fade-up" style={{ animationDelay: '400ms' }}>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/15">
+              <div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl shadow-brand-navy/15 cursor-pointer group/photo"
+                onClick={onPortfolioClick}
+              >
                 <img 
                   src="/images/hero-main.jpg" 
                   alt="Modern Home Renovation" 
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[500px] object-cover group-hover/photo:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent"></div>
+                <div className="absolute top-[55%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0 group-hover/photo:scale-110 transition-transform duration-300">
+                  <img src="/images/click-icon.png" alt="Click to see more" className="w-16 h-16 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" />
+                  <span className="text-white font-bold text-base tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] -mt-1">More</span>
+                </div>
               </div>
 
               <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-brand-navy/5 animate-float">
